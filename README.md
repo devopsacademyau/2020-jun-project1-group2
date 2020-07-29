@@ -1,15 +1,8 @@
-2020-jun-project1-group2
+Migrating a Wordpress Application to AWS [2020-jun-project1-group2]
 
 # Project 1
 
 This repository is related to source code of the project 1 of group2.
-
-
-## Introduction
-This projects aims to:
-* Create Wordpress in AWS
-
-Application [BookOffice-Frontend](https://gitlab.com/guidance-experts/bookoffice/bookoffice-react).
 
 ### Description
 
@@ -19,7 +12,25 @@ Currently the solution is hosted in a single server (application and database) a
 
 The CEO is worried that a traffic peak may bring down the website and decided to migrate to AWS. Your team was contracted to perform this migration.
 
+# Table of Contents
+
+- [Introduction](#introduction)
+- [Requirements](#requirements)
+- [Solution Overview](#solution-overview)
+- [Assumptions](#assumptions)
+- [Quick Start](#quick-start)
+- [Resources](#resources)
+- [Contributors](#Contributors)
+
+## Introduction
+
+This projects aims to:
+
+- Create Migration of an Wordpress to AWS
+
 ### Requirements
+
+Run a pilot migration to AWS cloud considering the following requirements:
 
 - Containerize the application using Docker (see Resources section).
 - The application needs to be secure (all data encrypted at rest and in transit)
@@ -28,22 +39,30 @@ The CEO is worried that a traffic peak may bring down the website and decided to
 - The infrastructure needs to be reproducible and version controlled in case the CEO decides to expand the business to other parts of the world (consider infra as code).
 - There must be an easy and secure way of developing, with fast feedback (consider CI/CD practices or at least automation scripts)
 
-### Overview application
+### Solution Overview
 
 TBD
 
+## Assumptions
+
+- As it is a pilot migration to AWS, data migration is out of scope
+- Testers were contracted to develop unit/service/integration tests for this pipeline, so you don't need to write tests but consider including this step in your CI pipeline or automation scripts!
+- Consider the application as stateless for this pilot. In Wordpress some files may be stored locally on the server (e.g. on image upload)
+- For this pilot we are aiming to have as much as possible as code
+- Single Github repo.
+
 ### Quick Start
 
-* Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+- Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-* Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
+- Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
 
-* Install [Docker](https://docs.docker.com/get-docker/)
+- Install [Docker](https://docs.docker.com/get-docker/)
+
   - Related tool:
-    * [Docker Compose](https://docs.docker.com/compose/install/)
+    - [Docker Compose](https://docs.docker.com/compose/install/)
 
-* Install [Terraform](https://learn.hashicorp.com/terraform/getting-started/install.html)
-
+- Install [Terraform](https://learn.hashicorp.com/terraform/getting-started/install.html)
 
 * Clone the repository and get inside it:
 
@@ -51,10 +70,11 @@ TBD
 git clone git@github.com:devopsacademyau/2020-jun-project1-group2.git
 cd 2020-jun-project1-group2
 ```
-** Check if you have permission to clone the repository via SSH,
+
+\*\* Check if you have permission to clone the repository via SSH,
 or insert your ssh-key on your github([more details here](https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)).
 
-* Setup your .env file according to this example
+- Setup your .env file according to this example
 
 ```
 # AWS
@@ -69,15 +89,19 @@ S3_REGION="enter_s3_region_here"
 
 ```
 
+## Resources
+
+To be added
+
 ### Contributors
 
- - Nimmi (nimmi89)
- - Tim (obrientimothya)
- - Guilherme (gepifanio)
- - Marcus (mrcsmonteiro)
- - Gustavo (gpavelar)
+- Nimmi (nimmi89)
+- Tim (obrientimothya)
+- Guilherme (gepifanio)
+- Marcus (mrcsmonteiro)
+- Gustavo (gpavelar)
 
- - DevOps Trainers
-  * Caio
-  * Denis
-  * Kiko
+* DevOps Trainers
+  - Caio
+  - Denis
+  - Kiko
