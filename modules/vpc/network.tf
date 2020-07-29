@@ -3,13 +3,7 @@ resource "aws_vpc" "project1-vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
 
-  tags {
-    Name = "vpc-project1"
+  tags = {
+    Name = "project1-vpc"
   }
 }
-
-
-
-
-2 NACLs public/private (ALLOW ALL is not permitted)
-Internet Gateway in place
