@@ -1,6 +1,4 @@
-Migrating a Wordpress Application to AWS [2020-jun-project1-group2]
-
-# Project 1
+# Migrating a Wordpress Application to AWS [2020-jun-project1-group2]
 
 This repository is related to source code of the project 1 of group2.
 
@@ -46,7 +44,7 @@ TBD
 ## Assumptions
 
 - As it is a pilot migration to AWS, data migration is out of scope
-- Testers were contracted to develop unit/service/integration tests for this pipeline, so you don't need to write tests but consider including this step in your CI pipeline or automation scripts!
+- Testers were contracted to develop unit/service/integration tests for this pipelinea, so you don't need to write tests but consider including this step in your CI pipeline or automation scripts!
 - Consider the application as stateless for this pilot. In Wordpress some files may be stored locally on the server (e.g. on image upload)
 - For this pilot we are aiming to have as much as possible as code
 - Single Github repo.
