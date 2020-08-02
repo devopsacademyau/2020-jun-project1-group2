@@ -23,12 +23,12 @@ resource "aws_iam_role" "ec2_efs_role" {
 EOF
 
   tags = {
-    Name = "ecs-efs-role"
+    Name = "ec2-efs-role"
   }
 }
 
-resource "aws_iam_role_policy" "ecs_efs_policy" {
-  name = "ecs-efs-policy"
+resource "aws_iam_role_policy" "ec2_efs_policy" {
+  name = "ec2-efs-policy"
   role = aws_iam_role.ec2_efs_role.id
 
   policy = <<-EOF
@@ -51,5 +51,69 @@ resource "aws_iam_role_policy" "ecs_efs_policy" {
         }
     ]
 }
+  EOF
+}
+
+resource "aws_iam_role" "ecs_task_role" {
+  name = "ecs-task-role"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2008-10-17",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "ecs-tasks.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+EOF
+
+  tags = {
+    Name = "ecs-task-role"
+  }
+}
+
+resource "aws_iam_role_policy" "ecs_task_policy" {
+  name = "ecs-task-policy"
+  role = aws_iam_role.ecs_task_role.id
+
+  policy = <<-EOF
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "ecr:GetAuthorizationToken",
+          "ecr:BatchCheckLayerAvailability",
+          "ecr:GetDownloadUrlForLayer",
+          "ecr:BatchGetImage",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Sid": "EFSPolicy",
+        "Effect": "Allow",
+        "Action": [
+          "elasticfilesystem:ClientMount",
+          "elasticfilesystem:ClientWrite",
+          "elasticfilesystem:ClientRootAccess"
+        ],
+        "Resource": "arn:aws:elasticfilesystem:${var.region}:${var.aws_acct_number}:file-system/${aws_efs_file_system.efs_fs.id}",
+        "Condition": {
+          "StringEquals": {
+            "elasticfilesystem:AccessPointArn": "arn:aws:elasticfilesystem:${var.region}:${var.aws_acct_number}:access-point/${aws_efs_access_point.efs_access_point.id}"
+          }
+        }
+      }
+   ]
+  }
   EOF
 }

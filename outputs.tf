@@ -22,3 +22,8 @@ output "pvt_sub_id_az_b" {
   description = "Private subnet ID"
   value       = module.vpc.pvt_sub_id_az_b
 }
+
+output "alb_dns_name" {
+  description = "ALB DNS name"
+  value       = aws_alb.alb.dns_name
+}
