@@ -87,6 +87,14 @@ S3_REGION="enter_s3_region_here"
 
 ```
 
+#### Running Terraform Locally
+
+```
+$ cd terraform
+$ terraform init
+$ terraform plan -var-file wordpress.tfvars
+```
+
 ## Resources
 
 To be added
