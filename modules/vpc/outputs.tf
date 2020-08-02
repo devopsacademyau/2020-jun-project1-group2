@@ -22,3 +22,8 @@ output "pvt_sub_id_az_b" {
   description = "Private subnet ID"
   value       = aws_subnet.pvt_sub_b.id
 }
+
+output "igw_id" {
+  description = "IGW ID"
+  value       = aws_internet_gateway.igw.id
+}
