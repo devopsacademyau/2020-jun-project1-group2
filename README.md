@@ -87,6 +87,13 @@ S3_REGION="enter_s3_region_here"
 
 ```
 
+## Running Terraform 3musketeers
+
+```
+$ make plan    # runs linter, then builds and displays the terraform plan
+$ make apply   # apply the generated plan to AWS
+```
+
 ## Resources
 
 To be added
