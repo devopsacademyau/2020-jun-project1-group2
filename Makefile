@@ -1,5 +1,5 @@
 DOCKER=docker-compose run --rm
-TF_VARS=wordpress.tfvars
+TF_VARS=main.tfvars
 TF_STATE=terraform.tfstate
 TF_PLAN=wordpress.tfplan
 

@@ -1,1 +1,34 @@
-ssh_key_name   = "" 
+ssh_key_name   = ""
+
+secure_strings = [
+  "WORDPRESS_DB_HOST",
+  "WORDPRESS_DB_USER",
+  "WORDPRESS_DB_PASSWORD",
+  "WORDPRESS_DB_NAME"
+]
+
+vpc_cidr        = "10.0.0.0/16"
+ami_id          = "ami-0ded330691a314693"
+aws_acct_number = "149613515908"
+my_ip           = "220.253.7.163/32"
+container_name  = "wordpress"
+public_subnets = {
+  az-a = {
+    cidr = "10.0.1.0/24"
+    az   = "ap-southeast-2a"
+  },
+  az-b = {
+    cidr = "10.0.3.0/24"
+    az   = "ap-southeast-2b"
+  }
+}
+private_subnets = {
+  az-a = {
+    cidr = "10.0.2.0/24"
+    az   = "ap-southeast-2a"
+  },
+  az-b = {
+    cidr = "10.0.4.0/24"
+    az   = "ap-southeast-2b"
+  }
+}
