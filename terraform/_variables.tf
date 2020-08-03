@@ -34,15 +34,7 @@ variable "private_subnets" {
   }))
 }
 
-variable my_ip {
-  type = string
-}
-
 variable ami_id {
-  type = string
-}
-
-variable aws_acct_number {
   type = string
 }
 

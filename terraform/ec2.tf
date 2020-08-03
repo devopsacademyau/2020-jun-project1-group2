@@ -27,3 +27,14 @@ resource "aws_instance" "private_instance" {
     "Name" = "private-instance"
   }
 }
+
+data "aws_caller_identity" "current" {}
+
+data "http" "workstation-external-ip" {
+  url = "http://ipv4.icanhazip.com"
+}
+
+locals {
+  my_ip_cidr = "${chomp(data.http.workstation-external-ip.body)}/32"
+  account_id = data.aws_caller_identity.current.account_id
+}

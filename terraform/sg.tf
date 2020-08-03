@@ -6,7 +6,7 @@ resource "aws_default_security_group" "default" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [var.my_ip, var.vpc_cidr]
+    cidr_blocks = [local.my_ip_cidr, var.vpc_cidr]
   }
 
   ingress {

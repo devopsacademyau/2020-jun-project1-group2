@@ -42,10 +42,10 @@ resource "aws_iam_role_policy" "ec2_efs_policy" {
                 "elasticfilesystem:ClientWrite",
                 "elasticfilesystem:ClientRootAccess"
             ],
-            "Resource": "arn:aws:elasticfilesystem:${var.region}:${var.aws_acct_number}:file-system/${aws_efs_file_system.efs_fs.id}",
+            "Resource": "arn:aws:elasticfilesystem:${var.region}:${local.account_id}:file-system/${aws_efs_file_system.efs_fs.id}",
             "Condition": {
                 "StringEquals": {
-                    "elasticfilesystem:AccessPointArn": "arn:aws:elasticfilesystem:${var.region}:${var.aws_acct_number}:access-point/${aws_efs_access_point.efs_access_point.id}"
+                    "elasticfilesystem:AccessPointArn": "arn:aws:elasticfilesystem:${var.region}:${local.account_id}:access-point/${aws_efs_access_point.efs_access_point.id}"
                 }
             }
         }
@@ -106,10 +106,10 @@ resource "aws_iam_role_policy" "ecs_task_policy" {
           "elasticfilesystem:ClientWrite",
           "elasticfilesystem:ClientRootAccess"
         ],
-        "Resource": "arn:aws:elasticfilesystem:${var.region}:${var.aws_acct_number}:file-system/${aws_efs_file_system.efs_fs.id}",
+        "Resource": "arn:aws:elasticfilesystem:${var.region}:${local.account_id}:file-system/${aws_efs_file_system.efs_fs.id}",
         "Condition": {
           "StringEquals": {
-            "elasticfilesystem:AccessPointArn": "arn:aws:elasticfilesystem:${var.region}:${var.aws_acct_number}:access-point/${aws_efs_access_point.efs_access_point.id}"
+            "elasticfilesystem:AccessPointArn": "arn:aws:elasticfilesystem:${var.region}:${local.account_id}:access-point/${aws_efs_access_point.efs_access_point.id}"
           }
         }
       }

@@ -7,12 +7,10 @@ secure_strings = [
   "WORDPRESS_DB_NAME"
 ]
 
-vpc_cidr        = "10.0.0.0/16"
-ami_id          = "ami-0ded330691a314693"
-aws_acct_number = "149613515908"
-my_ip           = "220.253.7.163/32"
-container_name  = "wordpress"
-instance_type   = "t2.micro"
+vpc_cidr       = "10.0.0.0/16"
+ami_id         = "ami-0ded330691a314693"
+container_name = "wordpress"
+instance_type  = "t2.micro"
 
 public_subnets = {
   az-a = {

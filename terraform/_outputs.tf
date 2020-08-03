@@ -32,3 +32,8 @@ output "aurora_endpoint" {
   description = "Aurora serverless endpoint"
   value       = aws_rds_cluster.aurora_cluster.endpoint
 }
+
+output "efs_id" {
+  description = "EFS ID"
+  value       = aws_efs_file_system.efs_fs.id
+}
