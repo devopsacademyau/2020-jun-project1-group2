@@ -3,12 +3,12 @@ resource "aws_network_acl" "pub_nacl" {
   vpc_id     = aws_vpc.vpc.id
 
   egress {
-    protocol   = "tcp"
+    protocol   = -1
     rule_no    = 100
     action     = "allow"
     cidr_block = "0.0.0.0/0"
-    from_port  = 1
-    to_port    = 65535
+    from_port  = 0
+    to_port    = 0
   }
 
   ingress {
@@ -39,11 +39,20 @@ resource "aws_network_acl" "pub_nacl" {
   }
 
   ingress {
-    protocol   = "tcp"
+    protocol   = -1
     rule_no    = 130
     action     = "allow"
     cidr_block = "10.0.0.0/16"
-    from_port  = 1
+    from_port  = 0
+    to_port    = 0
+  }
+
+  ingress {
+    protocol   = "tcp"
+    rule_no    = 140
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    from_port  = 1024
     to_port    = 65535
   }
 
@@ -57,12 +66,12 @@ resource "aws_network_acl" "pvt_nacl" {
   vpc_id     = aws_vpc.vpc.id
 
   egress {
-    protocol   = "tcp"
+    protocol   = -1
     rule_no    = 100
     action     = "allow"
     cidr_block = "0.0.0.0/0"
-    from_port  = 1
-    to_port    = 65535
+    from_port  = 0
+    to_port    = 0
   }
 
   ingress {
@@ -90,6 +99,15 @@ resource "aws_network_acl" "pvt_nacl" {
     cidr_block = var.vpc_cidr
     from_port  = 22
     to_port    = 22
+  }
+
+  ingress {
+    protocol   = "tcp"
+    rule_no    = 130
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    from_port  = 1024
+    to_port    = 65535
   }
 
   tags = {
