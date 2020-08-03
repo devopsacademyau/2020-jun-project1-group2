@@ -87,12 +87,11 @@ S3_REGION="enter_s3_region_here"
 
 ```
 
-#### Running Terraform Locally
+## Running Terraform 3musketeers
 
 ```
-$ cd terraform
-$ terraform init
-$ terraform plan -var-file wordpress.tfvars
+$ make plan    # runs linter, then builds and displays the terraform plan
+$ make apply   # apply the generated plan to AWS
 ```
 
 ## Resources
