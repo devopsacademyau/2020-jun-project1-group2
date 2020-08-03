@@ -1,0 +1,3 @@
+variable secure_strings {
+
+}

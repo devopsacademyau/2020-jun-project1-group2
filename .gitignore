@@ -1,3 +1,6 @@
+# terraform plan
+terraform/wordpress.tfplan
+
 # Local .terraform directories
 **/.terraform/*
 
@@ -38,7 +41,7 @@ override.tf.json
 terraform.rc
 
 # Ignore development and test environment files
-.env*
+.env
 
 ## gitignore from DevOpsAcademy
 .DS_STORE
