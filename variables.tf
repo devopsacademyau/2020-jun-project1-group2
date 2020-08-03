@@ -37,3 +37,7 @@ variable ami_id {
 variable aws_acct_number {
   type = string
 }
+
+variable container_name {
+  type = string
+}

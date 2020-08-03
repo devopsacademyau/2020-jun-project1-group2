@@ -1,0 +1,22 @@
+[
+  {
+    "name": "wordpress",
+    "image": "wordpress:latest",
+    "cpu": 256,
+    "memory": 512,
+    "essential": true,
+    "portMappings": [
+      {
+        "hostPort": 80,
+        "containerPort": 80,
+        "protocol": "tcp"
+      }
+    ],
+    "mountPoints": [
+      {
+        "containerPath": "/var/www/html",
+        "sourceVolume": "efs-storage"
+      }
+    ]
+  }
+]
