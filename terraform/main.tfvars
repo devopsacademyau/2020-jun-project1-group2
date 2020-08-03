@@ -1,4 +1,4 @@
-ssh_key_name   = ""
+ssh_key_name = "DevOpsAcademy"
 
 secure_strings = [
   "WORDPRESS_DB_HOST",
@@ -12,6 +12,8 @@ ami_id          = "ami-0ded330691a314693"
 aws_acct_number = "149613515908"
 my_ip           = "220.253.7.163/32"
 container_name  = "wordpress"
+instance_type   = "t2.micro"
+
 public_subnets = {
   az-a = {
     cidr = "10.0.1.0/24"
@@ -22,6 +24,7 @@ public_subnets = {
     az   = "ap-southeast-2b"
   }
 }
+
 private_subnets = {
   az-a = {
     cidr = "10.0.2.0/24"

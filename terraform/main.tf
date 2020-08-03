@@ -10,7 +10,7 @@
 #}
 
 module "vpc" {
-  source = "./modules/vpc"
+  source          = "./modules/vpc"
   region          = var.region
   azs             = var.azs
   vpc_cidr        = var.vpc_cidr

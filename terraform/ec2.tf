@@ -4,7 +4,7 @@ resource "aws_instance" "public_instance" {
   ami                         = var.ami_id
   associate_public_ip_address = true
   instance_type               = var.instance_type
-  key_name                    = var.ec2_key
+  key_name                    = var.ssh_key_name
   subnet_id                   = module.vpc.pub_sub_id_az_a
   iam_instance_profile        = aws_iam_instance_profile.ec2_efs_profile.id
 
@@ -19,7 +19,7 @@ resource "aws_instance" "private_instance" {
   ami                         = var.ami_id
   associate_public_ip_address = false
   instance_type               = var.instance_type
-  key_name                    = var.ec2_key
+  key_name                    = var.ssh_key_name
   subnet_id                   = module.vpc.pvt_sub_id_az_b
   iam_instance_profile        = aws_iam_instance_profile.ec2_efs_profile.id
 
