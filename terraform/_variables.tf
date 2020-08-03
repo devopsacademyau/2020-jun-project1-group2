@@ -6,3 +6,7 @@ variable "region" {
 variable "ssh_key_name" {
   description = "Name of SSH key pair to use as default (ec2-user) user key"
 }
+
+variable secure_strings {
+
+}
