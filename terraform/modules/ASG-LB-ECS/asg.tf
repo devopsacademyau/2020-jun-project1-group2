@@ -22,30 +22,30 @@ resource "aws_launch_configuration" "lc" {
  * Create Auto-Scaling Group
  */
 resource "aws_autoscaling_group" "asg" {
-    name                      = var.cluster_name
-    vpc_zone_identifier       = [var.subnet_ids]
-    min_size                  = var.min_size
-    max_size                  = var.max_size
-    health_check_type         = var.health_check_type
-    health_check_grace_period = var.health_check_grace_period
-    default_cooldown          = var.default_cooldown
-    termination_policies      = [var.termination_policies]
-    launch_configuration      = aws_launch_configuration.lc.id
+  name                      = var.cluster_name
+  vpc_zone_identifier       = [var.subnet_ids]
+  min_size                  = var.min_size
+  max_size                  = var.max_size
+  health_check_type         = var.health_check_type
+  health_check_grace_period = var.health_check_grace_period
+  default_cooldown          = var.default_cooldown
+  termination_policies      = [var.termination_policies]
+  launch_configuration      = aws_launch_configuration.lc.id
 
-    target_group_arns = [aws_lb_target_group.asg.arn]
+  target_group_arns = [aws_lb_target_group.asg.arn]
 
-    tags = ["${concat(
-        list(
-        map("key", "ecs_cluster", "value", var.cluster_name, "propagate_at_launch", true)
-        ),
-        var.tags
-    )}"]
+  tags = ["${concat(
+    list(
+      map("key", "ecs_cluster", "value", var.cluster_name, "propagate_at_launch", true)
+    ),
+    var.tags
+  )}"]
 
-    protect_from_scale_in = var.protect_from_scale_in
+  protect_from_scale_in = var.protect_from_scale_in
 
-    lifecycle {
-        create_before_destroy = true
-    }
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 /*
@@ -114,19 +114,19 @@ resource "aws_cloudwatch_metric_alarm" "scaleDown" {
 
 
 resource "aws_security_group" "sg_asg" {
-    name = var.cluster_name
-    // Allow ALL outbound traffic
-    egress {
-        from_port = 0
-        protocol = "-1" // ALL Protocols
-        to_port = 0
-        cidr_blocks = ["0.0.0.0/0"]
-    }
-    // Allow Inbound traffic from the ELB Security-Group
-    ingress {
-        from_port = 80
-        protocol = "tcp"
-        to_port = 80
-        security_groups = [aws_security_group.sg_load_balancer.id] // Allow Inbound traffic from the ALB Sec-Group
-    }
+  name = var.cluster_name
+  // Allow ALL outbound traffic
+  egress {
+    from_port   = 0
+    protocol    = "-1" // ALL Protocols
+    to_port     = 0
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  // Allow Inbound traffic from the ELB Security-Group
+  ingress {
+    from_port       = 80
+    protocol        = "tcp"
+    to_port         = 80
+    security_groups = [aws_security_group.sg_load_balancer.id] // Allow Inbound traffic from the ALB Sec-Group
+  }
 }

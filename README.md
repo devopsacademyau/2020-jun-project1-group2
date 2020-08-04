@@ -103,7 +103,7 @@ To be added
 - Nimmi (nimmi89)
 - Tim (obrientimothya)
 - Guilherme (gepifanio)
-- Marcus (mrcsmonteiro)
+- Marcos (mrcsmonteiro)
 - Gustavo (gpavelar)
 
 * DevOps Trainers
