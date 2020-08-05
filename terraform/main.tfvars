@@ -33,3 +33,6 @@ private_subnets = {
     az   = "ap-southeast-2b"
   }
 }
+
+image_tag_mutability = "MUTABLE"
+scan_images_on_push = true

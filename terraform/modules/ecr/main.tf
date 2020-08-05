@@ -1,9 +1,11 @@
 resource "aws_ecr_repository" "da-ecr" {
-  name                 = "da-project1-group2-ecr"
+  name                 = "wordpress-ecr"
   image_tag_mutability = var.image_tag_mutability
-
   image_scanning_configuration {
     scan_on_push = var.scan_images_on_push
+  }
+   tags = {
+    Name = "wordpress-ecr"
   }
 }
 
@@ -12,7 +14,7 @@ resource "aws_ecr_repository" "da-ecr" {
 
 
 resource "aws_ecr_repository_policy" "da-ecr-policy" {
-  repository = "${aws_ecr_repository.da-ecr.name}"
+  repository = aws_ecr_repository.da-ecr.name
 
   policy = <<EOF
 {
