@@ -45,3 +45,15 @@ variable container_name {
 variable instance_type {
   type = string
 }
+
+variable "image_tag_mutability" {
+  type        = string
+  default     = "MUTABLE"
+  description = "The tag mutability setting for the repository. "
+}
+
+variable "scan_images_on_push" {
+  type        = bool
+  description = "Indicates whether images are scanned after being pushed to the repository"
+  default     = false
+}

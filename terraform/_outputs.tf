@@ -37,3 +37,13 @@ output "efs_id" {
   description = "EFS ID"
   value       = aws_efs_file_system.efs_fs.id
 }
+
+output "ecr_name" {
+  description = "Name of repository created"
+  value       = module.ecr.repository_name
+}
+
+output "ecr_url" {
+  description = "URL of repository created"
+  value       = module.ecr.repository_url
+}
