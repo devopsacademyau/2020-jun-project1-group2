@@ -42,3 +42,20 @@ resource "aws_alb_listener" "alb_listener" {
     type             = "forward"
   }
 }
+
+resource "aws_alb_listener" "https_ssl" {
+  load_balancer_arn = aws_alb.alb.arn
+  port              = "443"
+  protocol          = "HTTPS"
+  depends_on        = [aws_alb_target_group.alb_tg]
+   
+  default_action {
+    target_group_arn = aws_alb_target_group.alb_tg.arn
+    type             = "forward"
+  }
+}
+
+resource "aws_lb_listener_certificate" "https_ssl_cert" {
+  listener_arn    = aws_alb_listener.https_ssl.arn
+  certificate_arn = "arn:aws:acm:ap-southeast-2:00012345678:certificate/abcd-abcd-abcd-4321-abcd"
+}
