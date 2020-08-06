@@ -23,4 +23,3 @@ variable "principals_full_access" {
   default     = []
 }
 
-

@@ -12,7 +12,6 @@ resource "aws_ecr_repository" "da-ecr" {
 
 # Repository policy
 
-
 resource "aws_ecr_repository_policy" "da-ecr-policy" {
   repository = aws_ecr_repository.da-ecr.name
 
