@@ -1,5 +1,5 @@
 resource "aws_ecr_repository" "da-ecr" {
-  name                 = "wordpress-ecr"
+  name                 = var.ecr_name
   image_tag_mutability = var.image_tag_mutability
   image_scanning_configuration {
     scan_on_push = var.scan_images_on_push
@@ -10,8 +10,7 @@ resource "aws_ecr_repository" "da-ecr" {
 }
 
 
-#Make it private registry by giving only project memebers full access.
-
+# Repository policy
 
 resource "aws_ecr_repository_policy" "da-ecr-policy" {
   repository = aws_ecr_repository.da-ecr.name

@@ -46,6 +46,12 @@ variable instance_type {
   type = string
 }
 
+variable "ecr_name" {
+  type        = string
+  default     = "wordpress-ecr"
+  description = "Name of the ECR repository"
+}
+
 variable "image_tag_mutability" {
   type        = string
   default     = "MUTABLE"
