@@ -1,15 +1,40 @@
-variable "ssh_key_name" {
-  description = "Name of SSH key pair to use as default (ec2-user) user key"
-}
+# COMMON
 
-variable secure_strings {
-
-}
-
-variable "region" {
-  type    = string
+variable region {
+  description = "AWS region to deploy to"
+  type = string
   default = "ap-southeast-2"
 }
+
+variable application_name {
+  type = string
+  description = "Application name to be appended to services. Eg. wordpress"
+  default = "wordpress"
+}
+
+# SSM
+
+variable secure_strings {
+  description = "defines parameters to be stored as SecureStrings in the SSM parameter store"
+  type = list
+  default = []
+}
+
+# ECR
+
+variable "image_tag_mutability" {
+  type        = string
+  default     = "MUTABLE"
+  description = "The tag mutability setting for the repository. "
+}
+
+variable "scan_images_on_push" {
+  type        = bool
+  description = "Indicates whether images are scanned after being pushed to the repository"
+  default     = false
+}
+
+# VPC
 
 variable "azs" {
   type    = list
@@ -34,32 +59,9 @@ variable "private_subnets" {
   }))
 }
 
-variable ami_id {
+# ECS
+
+variable "container_image_uri" {
   type = string
-}
-
-variable container_name {
-  type = string
-}
-
-variable instance_type {
-  type = string
-}
-
-variable "ecr_name" {
-  type        = string
-  default     = "wordpress-ecr"
-  description = "Name of the ECR repository"
-}
-
-variable "image_tag_mutability" {
-  type        = string
-  default     = "MUTABLE"
-  description = "The tag mutability setting for the repository. "
-}
-
-variable "scan_images_on_push" {
-  type        = bool
-  description = "Indicates whether images are scanned after being pushed to the repository"
-  default     = false
+  description = "Docker image repository URI. Eg repourl.com/myimage:myversion"
 }

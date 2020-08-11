@@ -1,9 +1,8 @@
 resource "aws_efs_file_system" "efs_fs" {
-  creation_token   = "wordpress"
-  throughput_mode  = "bursting"
-  performance_mode = "generalPurpose"
+  creation_token   = var.application_name
+  encrypted        = true
   tags = {
-    Name = "wordpress"
+    Name = var.application_name
   }
 }
 
@@ -16,7 +15,7 @@ resource "aws_efs_access_point" "efs_access_point" {
   }
 
   root_directory {
-    path = "/wordpress"
+    path = "/${var.application_name}"
 
     creation_info {
       owner_uid   = 1001
@@ -26,7 +25,7 @@ resource "aws_efs_access_point" "efs_access_point" {
   }
 
   tags = {
-    "Name" = "wordpress"
+    "Name" = var.application_name
   }
 }
 

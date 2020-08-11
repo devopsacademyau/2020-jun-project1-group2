@@ -76,27 +76,49 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.vpc.id
 
   tags = {
-    Name = "igw"
+    Name = "${var.application_name}-igw"
   }
 }
 
-resource "aws_eip" "eip_nat_gw" {
+resource "aws_eip" "eip_nat_gw_a" {
   vpc = true
 
   depends_on = [aws_internet_gateway.igw]
 
   tags = {
-    Name = "nat-gw-eip"
+    Name = "${var.application_name}-eip-a"
   }
 }
 
-resource "aws_nat_gateway" "nat_gw" {
-  allocation_id = aws_eip.eip_nat_gw.id
+resource "aws_nat_gateway" "nat_gw_a" {
+  allocation_id = aws_eip.eip_nat_gw_a.id
   subnet_id     = aws_subnet.pub_sub_a.id
 
   tags = {
-    Name = "nat-gw-az-a"
+    Name = "${var.application_name}-az-a"
   }
 
   depends_on = [aws_internet_gateway.igw]
 }
+
+resource "aws_eip" "eip_nat_gw_b" {
+  vpc = true
+
+  depends_on = [aws_internet_gateway.igw]
+
+  tags = {
+    Name = "${var.application_name}-eip-b"
+  }
+}
+
+resource "aws_nat_gateway" "nat_gw_b" {
+  allocation_id = aws_eip.eip_nat_gw_b.id
+  subnet_id     = aws_subnet.pub_sub_b.id
+
+  tags = {
+    Name = "${var.application_name}-az-b"
+  }
+
+  depends_on = [aws_internet_gateway.igw]
+}
+

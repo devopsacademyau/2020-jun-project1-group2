@@ -1,33 +1,33 @@
 resource "aws_default_security_group" "default" {
-  vpc_id = module.vpc.vpc_id
+ vpc_id = module.vpc.vpc_id
 
-  ingress {
-    description = "Allow SSH ingress traffic for Admin"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = [local.my_ip_cidr, var.vpc_cidr]
-  }
+ ingress {
+   description = "Allow SSH ingress traffic for Admin"
+   from_port   = 22
+   to_port     = 22
+   protocol    = "tcp"
+   cidr_blocks = [var.vpc_cidr]
+ }
 
-  ingress {
-    description = "Allow HTTP ingress traffic"
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+ ingress {
+   description = "Allow HTTP ingress traffic"
+   from_port   = 80
+   to_port     = 80
+   protocol    = "tcp"
+   cidr_blocks = ["0.0.0.0/0"]
+ }
 
-  egress {
-    description = "Allow all egress traffic to anywhere"
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+ egress {
+   description = "Allow all egress traffic to anywhere"
+   from_port   = 0
+   to_port     = 0
+   protocol    = "-1"
+   cidr_blocks = ["0.0.0.0/0"]
+ }
 
-  tags = {
-    Name = "default-sg-devops-academy"
-  }
+ tags = {
+   Name = "default-sg-wordpress"
+ }
 }
 
 resource "aws_security_group" "alb_sg" {
@@ -112,7 +112,7 @@ resource "aws_security_group" "rds_sg" {
   }
 
   tags = {
-    Name = "rds-sg-devops-academy"
+    Name = "rds-sg-wordpress"
   }
 }
 

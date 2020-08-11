@@ -23,3 +23,8 @@ variable "private_subnets" {
     az   = string
   }))
 }
+
+variable "application_name" {
+  type = string
+  description = "Friendly application name to be tagged on resources"
+}
