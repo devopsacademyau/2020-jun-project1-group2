@@ -9,6 +9,8 @@ resource "aws_rds_cluster" "aurora_cluster" {
   vpc_security_group_ids = var.rds_security_group_ids
   skip_final_snapshot    = true
   deletion_protection    = false
+  kms_key_id             = aws_kms_key.rds.key_id
+  storage_encrypted      = true
 
   tags = {
     Name = "wp-aurora-cluster"
@@ -24,4 +26,9 @@ resource "aws_db_subnet_group" "aurora_subnet_group" {
   tags = {
     Name = "wp-aurora-subnet-group"
   }
+}
+
+resource "aws_kms_key" "rds" {
+  description             = "KMS key 1"
+  deletion_window_in_days = 10
 }
