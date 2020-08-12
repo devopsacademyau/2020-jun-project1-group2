@@ -5,6 +5,7 @@ resource "aws_ssm_parameter" "secure_string" {
   description = "Secure String ${each.value}"
   value       = "empty"
   type        = "SecureString"
+  overwrite   = false
 
   lifecycle {
     ignore_changes = [value]

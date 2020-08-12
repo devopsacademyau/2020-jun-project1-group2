@@ -1,16 +1,16 @@
 resource "aws_ecr_repository" "da-ecr" {
-  name                 = var.ecr_name
+  name                 = "wordpress-ecr"
   image_tag_mutability = var.image_tag_mutability
   image_scanning_configuration {
     scan_on_push = var.scan_images_on_push
+  }
+  encryption_configuration {
+    encryption_type = "KMS"
   }
    tags = {
     Name = "wordpress-ecr"
   }
 }
-
-
-# Repository policy
 
 resource "aws_ecr_repository_policy" "da-ecr-policy" {
   repository = aws_ecr_repository.da-ecr.name
@@ -44,4 +44,3 @@ resource "aws_ecr_repository_policy" "da-ecr-policy" {
 }
 EOF
 }
-
