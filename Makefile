@@ -1,10 +1,10 @@
 DOCKER=docker-compose run --rm
-TF_VAR=wordpress.tfvars
+TF_VARS=wordpress.tfvars
 TF_STATE=terraform.tfstate
 TF_PLAN=wordpress.tfplan
 
 plan: _env _env-AWS_ACCESS_KEY_ID _env-AWS_SECRET_ACCESS_KEY _env-TF_VAR_container_image_uri _init _test
-	$(DOCKER) terraform plan -var-file=$(TF_VAR) -state=$(TF_STATE) -out=$(TF_PLAN)
+	$(DOCKER) terraform plan -var-file=$(TF_VARS) -state=$(TF_STATE) -out=$(TF_PLAN)
 .PHONY: plan
 
 apply: _env _env-AWS_ACCESS_KEY_ID _env-AWS_SECRET_ACCESS_KEY _env-TF_VAR_container_image_uri _init
@@ -12,7 +12,7 @@ apply: _env _env-AWS_ACCESS_KEY_ID _env-AWS_SECRET_ACCESS_KEY _env-TF_VAR_contai
 .PHONY: apply
 
 destroy: _env _env-AWS_ACCESS_KEY_ID _env-AWS_SECRET_ACCESS_KEY _env-TF_VAR_container_image_uri _init
-	$(DOCKER) terraform destroy -var-file=$(TF_VAR) -state=$(TF_STATE)
+	$(DOCKER) terraform destroy -var-file=$(TF_VARS) -state=$(TF_STATE)
 .PHONY: destroy
 
 _env:
