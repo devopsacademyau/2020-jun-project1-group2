@@ -3,15 +3,15 @@ TF_VARS=wordpress.tfvars
 TF_STATE=terraform.tfstate
 TF_PLAN=wordpress.tfplan
 
-plan: _env _env-AWS_ACCESS_KEY_ID _env-AWS_SECRET_ACCESS_KEY _env-TF_VARS_container_image_uri _init _test
+plan: _env _env-AWS_ACCESS_KEY_ID _env-AWS_SECRET_ACCESS_KEY _env-TF_VAR_container_image_uri _init _test
 	$(DOCKER) terraform plan -var-file=$(TF_VARS) -state=$(TF_STATE) -out=$(TF_PLAN)
 .PHONY: plan
 
-apply: _env _env-AWS_ACCESS_KEY_ID _env-AWS_SECRET_ACCESS_KEY _env-TF_VARS_container_image_uri _init
+apply: _env _env-AWS_ACCESS_KEY_ID _env-AWS_SECRET_ACCESS_KEY _env-TF_VAR_container_image_uri _init
 	$(DOCKER) terraform apply -state=$(TF_STATE) $(TF_PLAN)
 .PHONY: apply
 
-destroy: _env _env-AWS_ACCESS_KEY_ID _env-AWS_SECRET_ACCESS_KEY _env-TF_VARS_container_image_uri _init
+destroy: _env _env-AWS_ACCESS_KEY_ID _env-AWS_SECRET_ACCESS_KEY _env-TF_VAR_container_image_uri _init
 	$(DOCKER) terraform destroy -var-file=$(TF_VARS) -state=$(TF_STATE)
 .PHONY: destroy
 
