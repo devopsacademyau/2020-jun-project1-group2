@@ -39,7 +39,8 @@ Run a pilot migration to AWS cloud considering the following requirements:
 
 ### Solution Overview
 
-TBD
+![image](https://drive.google.com/uc?export=view&id=1dLWcITB1Ug6DCdc3EB6ELeOMTss3BFcS)
+(Need to be Updated until Sunday)
 
 ## Assumptions
 
