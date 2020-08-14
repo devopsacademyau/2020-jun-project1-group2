@@ -1,0 +1,43 @@
+# This workflow will build and push a new container image to Amazon ECR,
+# and then will deploy a new task definition to Amazon ECS, when a release is created
+
+name: Build and Push Image to ECR
+on:
+  pull_request:
+    branches: 
+    - master
+
+defaults:
+  run:
+    working-directory: docker/wordpress-image
+
+
+jobs:
+  build_push:
+    name: Build and Push image
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      run: make ecr-login
+      
+    - name: Build and tag image
+      id: build-image
+      run: make build_image
+
+    - name: Push image to Amazon ECR
+      run: make push-image
+       
+  
+  
