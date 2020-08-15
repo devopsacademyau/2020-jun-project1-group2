@@ -12,13 +12,16 @@ The CEO is worried that a traffic peak may bring down the website and decided to
 
 # Table of Contents
 
-- [Introduction](#introduction)
-- [Requirements](#requirements)
-- [Solution Overview](#solution-overview)
-- [Assumptions](#assumptions)
-- [Quick Start](#quick-start)
-- [Resources](#resources)
-- [Contributors](#Contributors)
+- [Migrating a Wordpress Application to AWS [2020-jun-project1-group2]](#migrating-a-wordpress-application-to-aws-2020-jun-project1-group2)
+    - [Description](#description)
+- [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+    - [Requirements](#requirements)
+  - [Assumptions](#assumptions)
+    - [Quick Start](#quick-start)
+  - [Running Terraform 3musketeers](#running-terraform-3musketeers)
+    - [Solution Overview](#solution-overview)
+    - [Contributors](#contributors)
 
 ## Introduction
 
@@ -36,10 +39,6 @@ Run a pilot migration to AWS cloud considering the following requirements:
 - The application needs to support peaks of up to 10 times the average load (scalability).
 - The infrastructure needs to be reproducible and version controlled in case the CEO decides to expand the business to other parts of the world (consider infra as code).
 - There must be an easy and secure way of developing, with fast feedback (consider CI/CD practices or at least automation scripts)
-
-### Solution Overview
-
-TBD
 
 ## Assumptions
 
@@ -94,9 +93,9 @@ $ make plan    # runs linter, then builds and displays the terraform plan
 $ make apply   # apply the generated plan to AWS
 ```
 
-## Resources
+### Solution Overview
 
-To be added
+- [Solution Diagram](https://drive.google.com/file/d/1pBsQbNWMfZpMJjqa1JCTEtUx2n0ovpJ2/view?usp=sharing)
 
 ### Contributors
 
