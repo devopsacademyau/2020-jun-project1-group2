@@ -13,7 +13,7 @@ The CEO is worried that a traffic peak may bring down the website and decided to
 # Table of Contents
 
 - [Migrating a Wordpress Application to AWS [2020-jun-project1-group2]](#migrating-a-wordpress-application-to-aws-2020-jun-project1-group2)
-    - [Description](#description)
+  - [Description](#description)
 - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
     - [Requirements](#requirements)
@@ -71,27 +71,26 @@ cd 2020-jun-project1-group2
 \*\* Check if you have permission to clone the repository via SSH,
 or insert your ssh-key on your github([more details here](https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)).
 
-- Setup your .env file according to this example
-
-```
-# AWS
-AWS_API_KEY=""
-AWS_SECRET_KEY=""
-
-# AWS S3 File Upload
-AWS_ACCESS_KEY_ID="enter_AWS_acess_key_here"
-AWS_SECRET_ACCESS_KEY="enter_AWS_secret_here"
-S3_BUCKET_NAME="enter_s3_bucket_name_here"
-S3_REGION="enter_s3_region_here"
-
-```
-
 ## Running Terraform 3musketeers
 
-```
-$ make plan    # runs linter, then builds and displays the terraform plan
-$ make apply   # apply the generated plan to AWS
-```
+### Quick start
+
+- You need to export 3 variables that are required according to our .env-template. They are `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` and `TF_VAR_container_image_uri`.
+
+  So, according to this example
+
+  ```bash
+  export AWS_ACCESS_KEY_ID="your_access_key"
+  export AWS_SECRET_ACCESS_KEY="your_secret"
+  export TF_VAR_container_image_uri="container_image_uri"
+  ```
+
+- Run Makefile
+
+  ```
+  $ make plan    # runs linter, then builds and displays the terraform plan
+  $ make apply   # apply the generated plan to AWS
+  ```
 
 ### Solution Overview
 
