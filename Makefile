@@ -1,18 +1,17 @@
 DOCKER=docker-compose run --rm
 TF_VARS=wordpress.tfvars
-TF_STATE=terraform.tfstate
 TF_PLAN=wordpress.tfplan
 
 plan: _env _env-AWS_ACCESS_KEY_ID _env-AWS_SECRET_ACCESS_KEY _env-TF_VAR_container_image_uri _init _test
-	$(DOCKER) terraform plan -var-file=$(TF_VARS) -state=$(TF_STATE) -out=$(TF_PLAN)
+	$(DOCKER) terraform plan -var-file=$(TF_VARS) -out=$(TF_PLAN)
 .PHONY: plan
 
 apply: _env _env-AWS_ACCESS_KEY_ID _env-AWS_SECRET_ACCESS_KEY _env-TF_VAR_container_image_uri _init
-	$(DOCKER) terraform apply -state=$(TF_STATE) $(TF_PLAN)
+	$(DOCKER) terraform apply $(TF_PLAN)
 .PHONY: apply
 
 destroy: _env _env-AWS_ACCESS_KEY_ID _env-AWS_SECRET_ACCESS_KEY _env-TF_VAR_container_image_uri _init
-	$(DOCKER) terraform destroy -var-file=$(TF_VARS) -state=$(TF_STATE)
+	$(DOCKER) terraform destroy -var-file=$(TF_VARS)
 .PHONY: destroy
 
 build: _env _env-AWS_ACCESS_KEY_ID _env-AWS_SECRET_ACCESS_KEY
@@ -33,8 +32,8 @@ deploy-wp: _env _env-AWS_ACCESS_KEY_ID _env-AWS_SECRET_ACCESS_KEY
 	$(eval AWS_ID=$(shell aws sts get-caller-identity --query Account --output text | head -n 1 | tr -d '\r\n'))
 	$(eval GIT_SHA=$(shell git rev-parse --short HEAD ))
 	$(DOCKER) -e TF_VAR_container_image_uri=$(AWS_ID).dkr.ecr.ap-southeast-2.amazonaws.com/wordpress-ecr:$(GIT_SHA) terraform init ;\
-	$(DOCKER) -e TF_VAR_container_image_uri=$(AWS_ID).dkr.ecr.ap-southeast-2.amazonaws.com/wordpress-ecr:$(GIT_SHA) terraform plan -var-file=$(TF_VARS) -state=$(TF_STATE) -out=$(TF_PLAN)
-	$(DOCKER) -e TF_VAR_container_image_uri=$(AWS_ID).dkr.ecr.ap-southeast-2.amazonaws.com/wordpress-ecr:$(GIT_SHA) terraform apply -state=$(TF_STATE) $(TF_PLAN)
+	$(DOCKER) -e TF_VAR_container_image_uri=$(AWS_ID).dkr.ecr.ap-southeast-2.amazonaws.com/wordpress-ecr:$(GIT_SHA) terraform plan -var-file=$(TF_VARS) -out=$(TF_PLAN)
+	$(DOCKER) -e TF_VAR_container_image_uri=$(AWS_ID).dkr.ecr.ap-southeast-2.amazonaws.com/wordpress-ecr:$(GIT_SHA) terraform apply $(TF_PLAN)
 PHONY: deploy-wp
 
 _env:
