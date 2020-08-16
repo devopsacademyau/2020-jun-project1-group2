@@ -6,9 +6,7 @@ Amazon Elastic Container Registry (Amazon ECR) is a managed AWS Docker registry 
 
 Name                   | Description                                                                                     | Type           | Default           | Required
 ---------------------- | ----------------------------------------------------------------------------------------------- | -------------- | ----------------- | :------:
-ecr_name               | Name of the ECR repository                                                                      | `string`       | `"wordpress-ecr"` |   yes
 image_tag_mutability   | The tag mutability setting for the repository. Must be one of: `MUTABLE` or `IMMUTABLE`         | `string`       | `"MUTABLE"`       |    no
-principals_full_access | Principal ARNs to provide with full access to the ECR                                           | `list(string)` | `[]`              |    no
 scan_images_on_push    | Indicates whether images are scanned after being pushed to the repository (true) or not (false) | `bool`         | `false`           |   yes
 
 # Outputs
