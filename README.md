@@ -89,7 +89,8 @@ or insert your ssh-key on your github([more details here](https://help.github.co
 ## Solution Overview
 
 ![image](https://drive.google.com/uc?export=view&id=1RfmEbTWBphoGyHfQEyqStqp0DJptSmVA)
-**Solution Diagram** that can be acessed ([here](https://drive.google.com/file/d/1RfmEbTWBphoGyHfQEyqStqp0DJptSmVA/view?usp=sharing)
+
+Solution Diagram can be acessed [here](https://drive.google.com/file/d/1RfmEbTWBphoGyHfQEyqStqp0DJptSmVA/view?usp=sharing)
 
 ## Contributors
 
