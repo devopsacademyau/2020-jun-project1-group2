@@ -10,6 +10,7 @@ resource "aws_rds_cluster" "aurora_cluster" {
   skip_final_snapshot    = true
   deletion_protection    = false
   storage_encrypted      = true
+  apply_immediately      = true
 
   tags = {
     Name = "wp-aurora-cluster"
