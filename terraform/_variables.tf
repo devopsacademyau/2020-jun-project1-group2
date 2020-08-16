@@ -70,4 +70,6 @@ variable "private_subnets" {
 variable "container_image_uri" {
   type = string
   description = "Docker image repository URI. Eg repourl.com/myimage:myversion"
+  default = "wordpress:5.4.2-php7.2-apache"
 }
+
