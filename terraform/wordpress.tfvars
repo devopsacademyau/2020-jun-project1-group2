@@ -1,11 +1,7 @@
 # SSM
 
-secure_strings = [
-  "/wordpress/WORDPRESS_DB_HOST",
-  "/wordpress/WORDPRESS_DB_USER",
-  "/wordpress/WORDPRESS_DB_PASSWORD",
-  "/wordpress/WORDPRESS_DB_NAME"
-]
+wordpress_db_name = "wordpress"
+wordpress_db_user = "wordpress"
 
 # ECR
 

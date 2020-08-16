@@ -9,6 +9,7 @@ resource "aws_rds_cluster" "aurora_cluster" {
   vpc_security_group_ids = var.rds_security_group_ids
   skip_final_snapshot    = true
   deletion_protection    = false
+  storage_encrypted      = true
 
   tags = {
     Name = "wp-aurora-cluster"
