@@ -77,9 +77,11 @@ or insert your ssh-key on your github([more details here](https://help.github.co
 
 1. Install docker and aws-cli on your computer
 
-2. Generate a key pair called `key_pair_group2`
+2. Create an encrypted S3 bucket for state. Modify `terraform/_backend.tf` to set your bucket name.
 
-3. Export the following variables that are required according to our `.env-template`. They are `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` and `TF_VAR_container_image_uri`.
+3. Generate a key pair called `key_pair_group2`
+
+4. Export the following variables that are required according to our `.env-template`. They are `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` and `TF_VAR_container_image_uri`.
 
    So, according to this example
 
@@ -89,13 +91,13 @@ or insert your ssh-key on your github([more details here](https://help.github.co
    export TF_VAR_container_image_uri="container_image_uri" #published image version
    ```
 
-4. Run `make plan`
-5. Run `make apply`
-6. Change the DB password using the [console](https://ap-southeast-2.console.aws.amazon.com/rds/home?region=ap-southeast-2#)
+5. Run `make plan`
+6. Run `make apply`
+7. Change the DB password using the [console](https://ap-southeast-2.console.aws.amazon.com/rds/home?region=ap-southeast-2#)
 
-7. Run `make build`
-8. Run `make publish`
-9. Run `make deploy-wp`
+8. Run `make build`
+9. Run `make publish`
+10. Run `make deploy-wp`
 
 - Run Makefile
 
