@@ -7,7 +7,7 @@ on:
 
 jobs:
   terraform:
-    name: 'Terraform Push'
+    name: 'Terraform Plan'
     runs-on: ubuntu-latest
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
