@@ -13,6 +13,7 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      TF_VAR_container_image_url: ${{ secrets.WORDPRESS_IMAGE_URL }}
       GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
     defaults:
