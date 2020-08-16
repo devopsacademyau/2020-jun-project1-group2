@@ -4,6 +4,16 @@ variable "vpc_id" {
 }
 
 variable "key_pair_name" {
-  type: string
+  type = string
   description = "Personal key pair name"
+}
+
+variable "bastion_sg" {
+  type = string
+  description = "Security Group"
+}
+
+variable "subnet_id" {
+  type = string
+  description = "Subnet to place host"
 }

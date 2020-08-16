@@ -145,7 +145,7 @@ resource "aws_security_group" "efs_sg" {
 
 resource "aws_security_group" "bastion_sg" {
   name   = "bastion-security-group"
-  vpc_id = var.vpc_id
+  vpc_id = module.vpc.vpc_id
 
   ingress {
     description = "Allow port 22 ingress to connect using SSH"
@@ -158,8 +158,8 @@ resource "aws_security_group" "bastion_sg" {
   egress {
     description = "Allow all egress traffic to anywhere"
     protocol    = -1
-    from_port   = 0 
-    to_port     = 0 
+    from_port   = 0
+    to_port     = 0
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
