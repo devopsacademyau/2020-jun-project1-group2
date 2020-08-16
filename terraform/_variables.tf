@@ -14,10 +14,16 @@ variable application_name {
 
 # SSM
 
-variable secure_strings {
-  description = "defines parameters to be stored as SecureStrings in the SSM parameter store"
-  type = list
-  default = []
+variable wordpress_db_name {
+  description = "Name of the RDS database used to hold the Wordpress schema"
+  type = string
+  default = "wordpress"
+}
+
+variable wordpress_db_user {
+  description = "Username to connect to the RDS database instance"
+  type = string
+  default = "wordpress"
 }
 
 # ECR
@@ -64,6 +70,7 @@ variable "private_subnets" {
 variable "container_image_uri" {
   type = string
   description = "Docker image repository URI. Eg repourl.com/myimage:myversion"
+  default = "wordpress:5.4.2-php7.2-apache"
 }
 
 # EC2 BASTION

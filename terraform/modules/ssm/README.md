@@ -12,9 +12,16 @@ No requirements.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| secure\_strings | Array of secure string names to be created in SSM. Eg. /wordpress/WORDPRESS\_DB\_HOST. Note: All values must be set manually after the parameters are created. | `list` | `[]` | no |
+| wordpress\_db\_host | RDS database endpoint URL for connecting to the Wordpress database. | `string` | n/a | yes |
+| wordpress\_db\_name | Name of the RDS database used to hold the Wordpress data | `string` | `"wordpress"` | no |
+| wordpress\_db\_user | Database username for establishing a connection to the Wordpress database | `string` | `"wordpress"` | no |
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| wordpress\_db\_host | Wordpress RDS endpoint url |
+| wordpress\_db\_name | Wordpress RDS database name |
+| wordpress\_db\_password | Wordpress RDS database password |
+| wordpress\_db\_user | Wordpress RDS database user |
 

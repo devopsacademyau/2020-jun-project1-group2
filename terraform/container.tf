@@ -20,19 +20,19 @@ module "container_definition" {
   environment      = [
     {
       name = "WORDPRESS_DB_HOST"
-      value = data.aws_ssm_parameter.database_host.value
+      value = module.ssm.wordpress_db_host
     },
     {
       name = "WORDPRESS_DB_NAME"
-      value = data.aws_ssm_parameter.database_name.value
+      value = module.ssm.wordpress_db_name
     },
     {
       name = "WORDPRESS_DB_USER"
-      value = data.aws_ssm_parameter.database_user.value
+      value = module.ssm.wordpress_db_user
     },
     {
       name = "WORDPRESS_DB_PASSWORD"
-      value = data.aws_ssm_parameter.database_password.value
+      value = module.ssm.wordpress_db_password
     }
   ]
 }
