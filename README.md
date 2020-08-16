@@ -12,24 +12,14 @@ The CEO is worried that a traffic peak may bring down the website and decided to
 
 # Table of Contents
 
-- [Migrating a Wordpress Application to AWS [2020-jun-project1-group2]](#migrating-a-wordpress-application-to-aws-2020-jun-project1-group2)
-  - [Description](#description)
-- [Table of Contents](#table-of-contents)
-  - [Introduction](#introduction)
-    - [Requirements](#requirements)
-  - [Assumptions](#assumptions)
-    - [Quick Start](#quick-start)
-  - [Running Terraform 3musketeers](#running-terraform-3musketeers)
-    - [Solution Overview](#solution-overview)
-    - [Contributors](#contributors)
+- [Requirements](#requirements)
+- [Assumptions](#assumptions)
+- [Required Tools](#required-tools)
+- [Quick Start](#quick-start)
+- [Solution Overview](#solution-overview)
+- [Contributors](#contributors)
 
-## Introduction
-
-This projects aims to:
-
-- Create Migration of an Wordpress to AWS
-
-### Requirements
+## Requirements
 
 Run a pilot migration to AWS cloud considering the following requirements:
 
@@ -48,7 +38,7 @@ Run a pilot migration to AWS cloud considering the following requirements:
 - For this pilot we are aiming to have as much as possible as code
 - Single Github repo.
 
-### Required Tools
+## Required Tools
 
 - Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
@@ -58,8 +48,6 @@ Run a pilot migration to AWS cloud considering the following requirements:
 
   - Related tool:
     - [Docker Compose](https://docs.docker.com/compose/install/)
-
-- Install [Terraform](https://learn.hashicorp.com/terraform/getting-started/install.html)
 
 * Clone the repository and get inside it:
 
@@ -71,11 +59,11 @@ cd 2020-jun-project1-group2
 \*\* Check if you have permission to clone the repository via SSH,
 or insert your ssh-key on your github([more details here](https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)).
 
-## Running Terraform 3musketeers
+## Quick Start
 
-### Quick start (Local machine)
+Installing from your Local Machine
 
-1. Install docker and aws-cli on your computer
+1. Install Required Tools (as above)
 
 2. Create an encrypted S3 bucket for state. Modify `terraform/_backend.tf` to set your bucket name.
 
@@ -100,12 +88,13 @@ or insert your ssh-key on your github([more details here](https://help.github.co
 9. Run `make publish`
 10. Run `make deploy-wp`
 
-### Solution Overview
+## Solution Overview
 
 ![image](https://drive.google.com/uc?export=view&id=1RfmEbTWBphoGyHfQEyqStqp0DJptSmVA)
-**Solution Diagram** that can be acessed ([here](https://drive.google.com/file/d/1RfmEbTWBphoGyHfQEyqStqp0DJptSmVA/view?usp=sharing)
 
-### Contributors
+Solution Diagram can be acessed [here](https://drive.google.com/file/d/1RfmEbTWBphoGyHfQEyqStqp0DJptSmVA/view?usp=sharing)
+
+## Contributors
 
 - Nimmi (nimmi89)
 - Tim (obrientimothya)
