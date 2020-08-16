@@ -65,3 +65,11 @@ variable "container_image_uri" {
   type = string
   description = "Docker image repository URI. Eg repourl.com/myimage:myversion"
 }
+
+# EC2 BASTION
+
+variable "key_pair_name" {
+  type = string
+  description = "Personal key pair name"
+  default = "key_pair_group2"
+}
