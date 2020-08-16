@@ -81,30 +81,23 @@ or insert your ssh-key on your github([more details here](https://help.github.co
 
 3. Generate a key pair called `key_pair_group2`
 
-4. Export the following variables that are required according to our `.env-template`. They are `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` and `TF_VAR_container_image_uri`.
+4. Export the following variables that are required according to our `.env-template`. They are `AWS_ACCESS_KEY_ID`, and `AWS_SECRET_ACCESS_KEY`.
 
    So, according to this example
 
    ```bash
    export AWS_ACCESS_KEY_ID="your_access_key"
    export AWS_SECRET_ACCESS_KEY="your_secret"
-   export TF_VAR_container_image_uri="container_image_uri" #published image version
+
    ```
 
 5. Run `make plan`
 6. Run `make apply`
-7. Change the DB password using the [console](https://ap-southeast-2.console.aws.amazon.com/rds/home?region=ap-southeast-2#)
+7. Change the DB password using the [console](https://ap-southeast-2.console.aws.amazon.com/systems-manager/parameters/?region=ap-southeast-2&tab=Table). `/wordpress/WORDPRESS_DB_PASSWORD
 
 8. Run `make build`
 9. Run `make publish`
 10. Run `make deploy-wp`
-
-- Run Makefile
-
-  ```bash
-  $ make plan    # runs linter, then builds and displays the terraform plan
-  $ make apply   # apply the generated plan to AWS
-  ```
 
 ### Solution Overview
 
