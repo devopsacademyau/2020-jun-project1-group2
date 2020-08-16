@@ -142,3 +142,24 @@ resource "aws_security_group" "efs_sg" {
     Name = "efs-sg-devops-academy"
   }
 }
+
+resource "aws_security_group" "bastion_sg" {
+  name   = "bastion-security-group"
+  vpc_id = var.vpc_id
+
+  ingress {
+    description = "Allow port 22 ingress to connect using SSH"
+    protocol    = "tcp"
+    from_port   = 22
+    to_port     = 22
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    description = "Allow all egress traffic to anywhere"
+    protocol    = -1
+    from_port   = 0 
+    to_port     = 0 
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}

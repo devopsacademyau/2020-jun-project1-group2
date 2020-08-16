@@ -73,3 +73,10 @@ variable "container_image_uri" {
   default = "wordpress:5.4.2-php7.2-apache"
 }
 
+# EC2 BASTION
+
+variable "key_pair_name" {
+  type = string
+  description = "Personal key pair name"
+  default = "key_pair_group2"
+}
