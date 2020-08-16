@@ -1,8 +1,6 @@
 # This workflow will deploy a new task definition to Amazon ECS based on the image pushed to ECR, when a merge is created
 
-
-
-name: Build and Deploy to ECS
+name: Deploy Worpress image
 on:
   push:
     branches: 
@@ -17,9 +15,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-
     
-    - name: Deploy Wordpress
+    - name: Deploy image
       env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
