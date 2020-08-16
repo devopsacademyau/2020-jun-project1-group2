@@ -59,7 +59,9 @@ cd 2020-jun-project1-group2
 \*\* Check if you have permission to clone the repository via SSH,
 or insert your ssh-key on your github([more details here](https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)).
 
-## Quick start (Local machine)
+## Quick Start
+
+Installing from your Local Machine
 
 1. Install Required Tools (as above)
 
