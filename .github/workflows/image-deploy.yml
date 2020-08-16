@@ -5,6 +5,7 @@ on:
   push:
     branches: 
     - master
+    paths: 'docker/'
 
 jobs:
   deploy:
@@ -18,6 +19,19 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-southeast-2
+    
+    - name: Build and tag image
+      run: make build
+
+    - name: Push image to Amazon ECR
+      run: make publish
     
     - name: Deploy image
       run: make deploy-wp
