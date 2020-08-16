@@ -48,7 +48,7 @@ Run a pilot migration to AWS cloud considering the following requirements:
 - For this pilot we are aiming to have as much as possible as code
 - Single Github repo.
 
-### Quick Start
+### Required Tools
 
 - Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
@@ -73,28 +73,41 @@ or insert your ssh-key on your github([more details here](https://help.github.co
 
 ## Running Terraform 3musketeers
 
-### Quick start
+### Quick start (Local machine)
 
-- You need to export 3 variables that are required according to our .env-template. They are `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` and `TF_VAR_container_image_uri`.
+1. Install docker and aws-cli on your computer
 
-  So, according to this example
+2. Generate a key pair called `key_pair_group2`
 
-  ```bash
-  export AWS_ACCESS_KEY_ID="your_access_key"
-  export AWS_SECRET_ACCESS_KEY="your_secret"
-  export TF_VAR_container_image_uri="container_image_uri"
-  ```
+3. Export the following variables that are required according to our `.env-template`. They are `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` and `TF_VAR_container_image_uri`.
+
+   So, according to this example
+
+   ```bash
+   export AWS_ACCESS_KEY_ID="your_access_key"
+   export AWS_SECRET_ACCESS_KEY="your_secret"
+   export TF_VAR_container_image_uri="container_image_uri" #published image version
+   ```
+
+4. Run `make plan`
+5. Run `make apply`
+6. Change the DB password using the [console](https://ap-southeast-2.console.aws.amazon.com/rds/home?region=ap-southeast-2#)
+
+7. Run `make build`
+8. Run `make publish`
+9. Run `make deploy-wp`
 
 - Run Makefile
 
-  ```
+  ```bash
   $ make plan    # runs linter, then builds and displays the terraform plan
   $ make apply   # apply the generated plan to AWS
   ```
 
 ### Solution Overview
 
-- [Solution Diagram](https://drive.google.com/file/d/1pBsQbNWMfZpMJjqa1JCTEtUx2n0ovpJ2/view?usp=sharing)
+![image](https://drive.google.com/uc?export=view&id=1RfmEbTWBphoGyHfQEyqStqp0DJptSmVA)
+**Solution Diagram** that can be acessed ([here](https://drive.google.com/file/d/1RfmEbTWBphoGyHfQEyqStqp0DJptSmVA/view?usp=sharing)
 
 ### Contributors
 
