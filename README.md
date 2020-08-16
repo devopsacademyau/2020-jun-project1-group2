@@ -93,6 +93,7 @@ or insert your ssh-key on your github([more details here](https://help.github.co
 
 5. Run `make plan`
 6. Run `make apply`
+
 7. Change the DB password using the [console](https://ap-southeast-2.console.aws.amazon.com/systems-manager/parameters/?region=ap-southeast-2&tab=Table). Example: `/wordpress/WORDPRESS_DB_PASSWORD`
 
 8. Run `make build`
